@@ -1,3 +1,6 @@
+# pip install piexif
+
+# Importing necessary libraries.
 import sys
 import os
 from PIL import Image
