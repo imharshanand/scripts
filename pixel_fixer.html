@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Fixer</title>
+<style>
+  /* Ensure the body and html elements occupy the full viewport and remove any margin/padding */
+  body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevents scrollbars from appearing */
+    background-color: black; /* Default background color */
+  }
+  #colorBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+<script>
+  // Array of solid colors to cycle through
+  let colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF', '#FFFFFF', '#000000', '#800000', '#008000', '#000080', '#808000', '#800080', '#008080'];
+  
+  // Array of patterns to cycle through
+  let patterns = [
+    'linear-gradient(45deg, #FF0000 25%, transparent 25%, transparent 75%, #FF0000 75%, #FF0000), linear-gradient(45deg, #FF0000 25%, #FFFFFF 25%, #FFFFFF 75%, #FF0000 75%, #FF0000)',
+    'linear-gradient(90deg, #0000FF 50%, #FFFFFF 50%)',
+    'linear-gradient(135deg, #00FF00 25%, transparent 25%, transparent 75%, #00FF00 75%, #00FF00), linear-gradient(135deg, #00FF00 25%, #000000 25%, #000000 75%, #00FF00 75%, #00FF00)',
+    'linear-gradient(45deg, #FFFF00 25%, transparent 25%, transparent 75%, #FFFF00 75%, #FFFF00), linear-gradient(45deg, #FFFF00 25%, #FFFFFF 25%, #FFFFFF 75%, #FFFF00 75%, #FFFF00)',
+    'linear-gradient(90deg, #FF00FF 50%, #FFFFFF 50%)',
+    'linear-gradient(135deg, #00FFFF 25%, transparent 25%, transparent 75%, #00FFFF 75%, #00FFFF), linear-gradient(135deg, #00FFFF 25%, #000000 25%, #000000 75%, #00FFFF 75%, #00FFFF)',
+    'linear-gradient(45deg, #800000 25%, transparent 25%, transparent 75%, #800000 75%, #800000), linear-gradient(45deg, #800000 25%, #FFFFFF 25%, #FFFFFF 75%, #800000 75%, #800000)',
+    'linear-gradient(90deg, #008000 50%, #FFFFFF 50%)',
+    'linear-gradient(135deg, #000080 25%, transparent 25%, transparent 75%, #000080 75%, #000080), linear-gradient(135deg, #000080 25%, #000000 25%, #000000 75%, #000080 75%, #000080)',
+    'linear-gradient(45deg, #808000 25%, transparent 25%, transparent 75%, #808000 75%, #808000), linear-gradient(45deg, #808000 25%, #FFFFFF 25%, #FFFFFF 75%, #808000 75%, #808000)',
+    'linear-gradient(90deg, #800080 50%, #FFFFFF 50%)',
+    'linear-gradient(135deg, #008080 25%, transparent 25%, transparent 75%, #008080 75%, #008080), linear-gradient(135deg, #008080 25%, #000000 25%, #000000 75%, #008080 75%, #008080)'
+  ];
+  
+  // Index to keep track of the current color/pattern
+  let currentIndex = 0;
+
+  // Function to change the color or pattern
+  function changeColor() {
+    let colorBox = document.getElementById('colorBox');
+    if (currentIndex % 2 === 0) {
+      // Apply a solid color
+      colorBox.style.background = colors[(currentIndex / 2) % colors.length];
+    } else {
+      // Apply a pattern
+      colorBox.style.background = patterns[((currentIndex - 1) / 2) % patterns.length];
+      colorBox.style.backgroundSize = '20px 20px';
+    }
+    currentIndex++;
+  }
+
+  // Function to start the color/pattern cycling
+  function startFixer() {
+    setInterval(changeColor, 200); // Change every 100 milliseconds
+  }
+
+  // Function to toggle fullscreen mode
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(console.log);
+    }
+  }
+
+  // When the window loads, start fullscreen mode and the color/pattern cycling
+  window.onload = function() {
+    toggleFullscreen();
+    startFixer();
+  };
+
+  // Toggle fullscreen mode when the window is clicked
+  window.onclick = toggleFullscreen; 
+</script>
+</head>
+<body>
+<div id="colorBox"></div>
+</body>
+</html>
