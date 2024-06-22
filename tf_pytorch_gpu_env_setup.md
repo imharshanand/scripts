@@ -2,6 +2,8 @@
 
 This guide will help you set up your environment to use TensorFlow with CUDA and cuDNN on a Linux system.
 
+![tested image on my system](images/tf_pytorch_nvidia_smi.png)
+
 ## Prerequisites
 
 1. Ensure you have a compatible NVIDIA GPU.
