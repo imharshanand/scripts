@@ -36,6 +36,7 @@ bash ./Miniconda3-latest-Linux-x86_64.sh
 ```sh
 wget https://developer.download.nvidia.com/compute/cuda/12.1.1/local_installers/cuda_12.1.1_530.30.02_linux.run
 sudo sh cuda_12.1.1_530.30.02_linux.run
+[Do not install the Nvidia Drivers, Press ENTER to deselect.]
 ```
 
 #### Update Environment Variables
@@ -220,6 +221,8 @@ cd /usr/local/TensorRT-8.6.1/python
 Install the necessary packages:
 
 ```sh
+[Make sure to be in a conda environment before running the below 3 commands]
+conda activate tf
 pip install tensorrt-8.6.1-cp39-none-linux_x86_64.whl
 pip install tensorrt_dispatch-8.6.1-cp39-none-linux_x86_64.whl
 pip install tensorrt_lean-8.6.1-cp39-none-linux_x86_64.whl
