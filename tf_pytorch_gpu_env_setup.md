@@ -148,10 +148,10 @@ gcc -o test_cudnn test_cudnn.c -I/usr/local/cuda-12.1/include -L/usr/local/cuda-
 
 ### Install TensorRT
 
-Download TensorRT from the [NVIDIA TensorRT Download](https://developer.nvidia.com/tensorrt/download).
-[nvidia-tensorrt-8x-download](https://developer.nvidia.com/nvidia-tensorrt-8x-download)
-TensorRT 8.6 GA for x86_64 Architecture
-[TensorRT 8.6 GA for Linux x86_64 and CUDA 12.0 and 12.1 TAR Package](https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/secure/8.6.1/tars/TensorRT-8.6.1.6.Linux.x86_64-gnu.cuda-12.0.tar.gz)
+Download TensorRT from the [NVIDIA TensorRT Download](https://developer.nvidia.com/tensorrt/download)  
+[nvidia-tensorrt-8x-download](https://developer.nvidia.com/nvidia-tensorrt-8x-download)  
+TensorRT 8.6 GA for x86_64 Architecture  
+[TensorRT 8.6 GA for Linux x86_64 and CUDA 12.0 and 12.1 TAR Package](https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/secure/8.6.1/tars/TensorRT-8.6.1.6.Linux.x86_64-gnu.cuda-12.0.tar.gz)  
 ```sh
 tar -xzvf TensorRT-8.6.1.6.Linux.x86_64-gnu.cuda-12.0.tar.gz
 sudo mv TensorRT-8.6.1.6 /usr/local/TensorRT-8.6.1
