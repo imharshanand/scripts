@@ -1,6 +1,7 @@
 # Environment Setup for TensorFlow with CUDA and cuDNN
 
 This guide will help you set up your environment to use TensorFlow with CUDA and cuDNN on a Linux system.
+Works with Ubuntu 22.04 and 24.04 [I have tested it]
 
 ![tested image on my system](images/tf_pytorch_nvidia_smi.png)
 
