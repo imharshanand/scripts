@@ -24,16 +24,18 @@ sudo apt upgrade
 sudo apt install build-essential
 ```
 
-### Install Miniconda
+### Install Anaconda
 
 ```sh
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash ./Miniconda3-latest-Linux-x86_64.sh
+[https://docs.anaconda.com/anaconda/install/linux/](https://docs.anaconda.com/anaconda/install/linux/)
+curl -O https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh
+bash ~/Downloads/Anaconda3-2024.02-1-Linux-x86_64.sh
 ```
 
 ### Install CUDA
 
 ```sh
+[CUDA Toolkit 12.1 Update 1 Downloads - Run File Local for Ubuntu 22.04 x86_64](https://developer.nvidia.com/cuda-12-1-1-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=22.04&target_type=runfile_local)
 wget https://developer.download.nvidia.com/compute/cuda/12.1.1/local_installers/cuda_12.1.1_530.30.02_linux.run
 sudo sh cuda_12.1.1_530.30.02_linux.run
 [Do not install the Nvidia Drivers, Press ENTER to deselect.]
@@ -149,7 +151,9 @@ gcc -o test_cudnn test_cudnn.c -I/usr/local/cuda-12.1/include -L/usr/local/cuda-
 Download TensorRT from the [NVIDIA TensorRT Download](https://developer.nvidia.com/tensorrt/download).
 
 Extract the downloaded tar file:
-
+[nvidia-tensorrt-8x-download](https://developer.nvidia.com/nvidia-tensorrt-8x-download)
+TensorRT 8.6 GA for x86_64 Architecture
+[TensorRT 8.6 GA for Linux x86_64 and CUDA 12.0 and 12.1 TAR Package](https://developer.nvidia.com/downloads/compute/machine-learning/tensorrt/secure/8.6.1/tars/TensorRT-8.6.1.6.Linux.x86_64-gnu.cuda-12.0.tar.gz)
 ```sh
 tar -xzvf TensorRT-8.6.1.6.Linux.x86_64-gnu.cuda-12.0.tar.gz
 sudo mv TensorRT-8.6.1.6 /usr/local/TensorRT-8.6.1
