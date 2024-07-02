@@ -193,3 +193,68 @@ sudo systemctl status qbittorrent
 ```
 
 By following these steps, qBittorrent will automatically start in daemon mode whenever your Ubuntu server boots up. You can manage the service using systemd commands like `start`, `stop`, `restart`, and `status`.
+
+
+To manage `qbittorrent-nox` with `systemctl`, you need to create a systemd service file for it. Here are the steps to do this:
+
+1. **Create a systemd Service File**:
+   Open a text editor to create a new service file. For example, using `nano`:
+
+   ```bash
+   sudo nano /etc/systemd/system/qbittorrent-nox.service
+   ```
+
+2. **Add Service Configuration**:
+   Add the following content to the file:
+
+   ```ini
+   [Unit]
+   Description=qBittorrent-nox
+   After=network.target
+
+   [Service]
+   User=harsh_server
+   ExecStart=/usr/bin/qbittorrent-nox --webui-port=8080
+   Restart=on-failure
+
+   [Install]
+   WantedBy=multi-user.target
+   ```
+
+   Make sure to replace `harsh_server` with the correct username if it's different. Adjust the path to `qbittorrent-nox` if it is not located in `/usr/bin/`.
+
+3. **Reload Systemd Daemon**:
+   After creating the service file, reload the systemd daemon to recognize the new service:
+
+   ```bash
+   sudo systemctl daemon-reload
+   ```
+
+4. **Start and Enable the Service**:
+   Start the `qbittorrent-nox` service and enable it to start on boot:
+
+   ```bash
+   sudo systemctl start qbittorrent-nox
+   sudo systemctl enable qbittorrent-nox
+   ```
+
+5. **Verify the Service**:
+   Check the status to ensure it is running:
+
+   ```bash
+   sudo systemctl status qbittorrent-nox
+   ```
+
+Now you can stop the service using:
+
+```bash
+sudo systemctl stop qbittorrent-nox
+```
+
+And start it again using:
+
+```bash
+sudo systemctl start qbittorrent-nox
+```
+
+With this setup, `qbittorrent-nox` will be managed by `systemd` and can be controlled with `systemctl` commands.
