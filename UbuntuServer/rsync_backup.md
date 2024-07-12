@@ -73,3 +73,81 @@ To restore your system from the backup created, you will use the `rsync` command
    ```bash
    sudo reboot
    ```
+
+
+### Steps to Delete the Old Backup
+
+1. **Navigate to the Backup Directory**:
+   ```bash
+   cd /mnt/live_storage/
+   ```
+
+2. **List the Contents**:
+   ```bash
+   ls
+   ```
+   This command will list all the directories in `/mnt/live_storage`, including the old backup directory `backup2`.
+
+3. **Remove the Old `backup2` Directory**:
+   Use `sudo` to ensure you have the necessary permissions to delete the write-protected directory.
+   ```bash
+   sudo rm -r /mnt/live_storage/backup2
+   ```
+   - `sudo`: Run as superuser to ensure all files are accessible.
+   - `rm -r`: Remove the directory and its contents recursively.
+
+### Steps to Create a New Backup with Exclusion
+
+1. **Ensure `rsync` is Installed**:
+   Verify that `rsync` is installed on your system.
+   ```bash
+   sudo apt install rsync
+   ```
+
+2. **Create a New Backup Directory**:
+   Create a new directory within your backup storage to store the new backup. This ensures that the old backup is not overwritten.
+   ```bash
+   sudo mkdir /mnt/live_storage/backup2
+   ```
+
+3. **Run the `rsync` Command with Exclusion**:
+   Use the following `rsync` command to create the new backup, excluding the specified directory.
+   ```bash
+   sudo rsync -av --delete \
+     --exclude={"/mnt","/proc","/sys","/dev","/run","/media","/lost+found","/home/harsh_server/Downloads/SOLID_STATE_DRIVE/TORRENT"} \
+     / /mnt/live_storage/backup2
+   ```
+   #### Command Breakdown:
+   - `sudo`: Run as superuser to ensure all files are accessible.
+   - `rsync`: The tool used for copying files.
+   - `-a`: Archive mode, which preserves permissions, symbolic links, etc.
+   - `-v`: Verbose mode, which provides detailed output.
+   - `--delete`: Deletes files in the destination that are not in the source to keep the backup in sync.
+   - `--exclude`: Excludes specific directories that shouldn’t be backed up. The new addition is `/home/harsh_server/Downloads/SOLID_STATE_DRIVE/TORRENT`.
+   - `/`: The root directory of your server (source).
+   - `/mnt/live_storage/backup2`: The new backup destination.
+
+### Verifying the New Backup
+
+After the backup process is complete, you can verify the contents and size of the new backup using the following commands:
+
+1. **List the New Backup Directory**:
+   ```bash
+   ls -lh /mnt/live_storage/backup2
+   ```
+   - `-l`: Use a long listing format.
+   - `-h`: Print sizes in human-readable format (e.g., 1K, 234M, 2G).
+
+2. **Check the Total Size of the New Backup**:
+   ```bash
+   sudo du -sh /mnt/live_storage/backup2
+   ```
+   - `-s`: Display only a total for each argument.
+   - `-h`: Print sizes in human-readable format.
+
+3. **Get a Detailed Size of Each Subdirectory in the New Backup**:
+   ```bash
+   sudo du -h --max-depth=1 /mnt/live_storage/backup2
+   ```
+   - `-h`: Print sizes in human-readable format.
+   - `--max-depth=1`: Limit the depth of the directory tree to display.
