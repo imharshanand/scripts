@@ -13,3 +13,9 @@ Welcome to my GitHub repository, where I maintain a collection of useful scripts
 - **[Rename Files Across Folders](rename_files_across_folder.py)** - A Python script to batch rename files across multiple folders.
 - **[Selenium Guide](selenium.md)** - A markdown guide for automated web actions using Selenium.
 - **[HEIC to JPEG Converter](heic_to_jpeg.py)** - Convert HEIC image files to JPEG format.
+
+![tested image on my system](images/tf_pytorch_nvidia_smi.png)
+
+---
+
+![ollama-on-local-ubuntu-server.png](images/ollama-on-local-ubuntu-server.png)
