@@ -1,0 +1,92 @@
+####################################################
+# 📘 SYSTEM ADMINISTRATION – SERVICE MANAGEMENT DOC
+# File: readme.txt
+# Description: Useful commands and instructions for managing services, tools, and environment setup on harsh-server (Ubuntu 24.04.2 LTS)
+####################################################
+
+===============================
+🖥️  VS CODE SERVER MANAGEMENT
+===============================
+# Enable and start code-server on boot
+sudo systemctl enable --now code-server@$USER
+
+# Disable and stop code-server
+sudo systemctl disable code-server@$USER
+
+# Restart code-server service
+sudo systemctl restart code-server@$USER
+
+# Check status of code-server
+systemctl status code-server@$USER
+
+
+===============================
+🐍 CONDA CONFIGURATION
+===============================
+# Prevent Conda from auto-activating the base environment on shell startup
+conda config --set auto_activate_base false
+
+
+===============================
+🔧 SYSTEMCTL COMMANDS
+===============================
+# List all running services
+systemctl list-units --type=service --state=running
+
+# Disable and stop a service
+sudo systemctl disable --now <service-name>
+
+# Enable and start a service
+sudo systemctl enable --now <service-name>
+
+# Disable a service (but do not stop it if it's running)
+sudo systemctl disable <service-name>
+
+# Unmask a service (make it usable again)
+sudo systemctl unmask <service-name>
+
+# Enable a service without starting it
+sudo systemctl enable <service-name>
+
+# Start a service manually
+sudo systemctl start <service-name>
+
+
+===============================
+🛑 SERVICES DISABLED (INTENTIONALLY)
+===============================
+sudo systemctl disable code-server@$USER
+sudo systemctl disable prometheus.service
+sudo systemctl disable grafana-server.service
+
+
+===============================
+🎞️ FFMPEG CONVERSION FOR JELLYFIN
+===============================
+# Convert a movie to x264 format with fast preset for web streaming
+/usr/lib/jellyfin-ffmpeg/ffmpeg -i "movie-name.mkv" \
+  -c:v libx264 -preset fast -crf 23 \
+  -c:a aac -b:a 192k \
+  -movflags +faststart \
+  "movie-name-new.mp4"
+
+
+===============================
+📊 CURRENTLY RUNNING SERVICES (SUMMARY)
+===============================
+As of: Fri Jul 18 23:49:37 IST 2025
+
+- ArchiSteamFarm Bot (asf.service)
+- Docker & containerd
+- cron, dbus, ssh, rsyslog
+- NetworkManager, systemd-networkd, wpa_supplicant
+- Prometheus, Jellyfin, qBittorrent-nox
+- Samba: smbd, nmbd
+- NVIDIA Persistence Daemon
+- PackageKit, Polkit, Snap Daemon
+- thermald, unattended-upgrades
+- ModemManager, UDisks2, systemd core services
+
+Use the following command to re-check this anytime:
+```bash
+systemctl list-units --type=service --state=running
