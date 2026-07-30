@@ -88,6 +88,24 @@ This guide provides step-by-step instructions for setting up a triple boot syste
    sudo update-grub
    ```
 
+# WINDOWS BOOTS FIRST
+#GRUB_DEFAULT="Windows Boot Manager (on /dev/sda3)"
+#GRUB_TIMEOUT_STYLE=menu
+#GRUB_TIMEOUT=5
+#GRUB_DISTRIBUTOR=`( . /etc/os-release; echo ${NAME:-Ubuntu} ) 2>/dev/null || echo Ubuntu`
+#GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+#GRUB_CMDLINE_LINUX=""
+
+# UBUNTU BOOTS FIRST
+GRUB_DEFAULT=0
+GRUB_TIMEOUT_STYLE=menu
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR=`( . /etc/os-release; echo ${NAME:-Ubuntu} ) 2>/dev/null || echo Ubuntu`
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+GRUB_CMDLINE_LINUX=""
+
+
+
 ## Network Configuration
 
 To connect to WiFi during the installation of Ubuntu Server, follow these steps:
