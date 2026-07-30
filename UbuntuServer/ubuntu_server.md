@@ -86,7 +86,9 @@ This guide provides step-by-step instructions for setting up a triple boot syste
 2. **Update GRUB**:
    ```bash
    sudo update-grub
-   ```
+
+
+
 
 # WINDOWS BOOTS FIRST
 #GRUB_DEFAULT="Windows Boot Manager (on /dev/sda3)"
@@ -104,6 +106,8 @@ GRUB_DISTRIBUTOR=`( . /etc/os-release; echo ${NAME:-Ubuntu} ) 2>/dev/null || ech
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
 GRUB_CMDLINE_LINUX=""
 
+
+   ```
 
 
 ## Network Configuration
